@@ -21,7 +21,7 @@ class DuneCommon < Formula
 
   def install
 
-    DuneGeometry.new.brew {(buildpath/'dune-geometry').install.Dir['*']}
+    DuneGeometry.new.brew {(buildpath/'dune-geometry').install Dir['*'] }
 
     system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
