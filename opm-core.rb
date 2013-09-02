@@ -11,11 +11,11 @@ class OpmCore < Formula
   #depends_on 'boost-build'
 
   def install
-    ENV['CFLAGS']=ENV['CXXFLAGS']="-fpic -m64 --enable-static --disable-shared"
+    ENV['CFLAGS']=ENV['CXXFLAGS']="-fpic -m64"
     # Note: Added --disable-lto to configure flags, per https://github.com/OPM/opm-core/issues/257
-    system "./configure", "--disable-debug", "--disable-lto", "--disable-dependency-tracking", "--prefix=#{prefix}"
+    system "./configure", "--enable-static", "--disable-shared", "--disable-debug", "--disable-lto", "--disable-dependency-tracking", "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
-    ENV['CFLAGS']=ENV['CXXFLAGS']="-fpic -m64  --enable-static --disable-shared"
+    ENV['CFLAGS']=ENV['CXXFLAGS']="-fpic -m64"
     system "make", "install" 
   end
 
