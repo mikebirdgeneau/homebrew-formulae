@@ -1,4 +1,4 @@
-Require 'formula'
+require 'formula'
 
 class DuneIstl < Formula
   homepage 'http://www.dune-project.org'
@@ -17,16 +17,15 @@ class DuneGeometry < Formula
 
   depends_on :fortran
   depends_on 'mikebirdgeneau/formulae/dune-common'
-
+  
 end
 
-class OpmCore < Formula
-  homepage 'http://www.opm-project.org/'
-  url 'https://github.com/OPM/opm-core/archive/release/2013.03/final.tar.gz'
-  sha1 '538d8a55ef9a20d2af024f2547721f07ea3232b6'
-  version '2013.03'
-
-end
+#class OpmCore < Formula
+#  homepage 'http://www.opm-project.org/'
+#  url 'https://github.com/OPM/opm-core/archive/release/2013.03/final.tar.gz'
+#  sha1 '538d8a55ef9a20d2af024f2547721f07ea3232b6'
+#  version '2013.03'
+#end
 
 class DuneCommon < Formula
   homepage ''
@@ -36,19 +35,19 @@ class DuneCommon < Formula
   depends_on 'cmake' => :build
   #depends_on :x11 # if your formula requires any X11/XQuartz components
   depends_on :fortran
-  depends_on 'Doxygen'
 
   def install
 
     DuneGeometry.new.brew {(buildpath/'dune-geometry').install Dir['*'] }
     DuneIstl.new.brew {(buildpath/'dune-istl').install Dir['*'] }
-    OpmCore.new.brew {(buildpath/'opm-core').install Dir['*'] }
-    system "#{buildpath}/bin/dunecontrol", "all", "--prefix=#{prefix}"
-    system "#{buildpath}/bin/dunecontrol", "make", "--prefix=#{prefix}"
-
-    system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
+    #OpmCore.new.brew {(buildpath/'opm-core').install Dir['*'] }
+    system "#{buildpath}/bin/dunecontrol", "all","--only=dune-common", "--prefix=#{prefix}"   
+    system "#{buildpath}/bin/dunecontrol", "all","--only=dune-grid", "--prefix=#{prefix}"   
+    system "#{buildpath}/bin/dunecontrol", "all","--only=dune-istl", "--prefix=#{prefix}"   
+    
+    # system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
-    system "make", "install" # if this fails, try separate make/make install steps
+    # system "make", "install" # if this fails, try separate make/make install steps
   end
 
   test do

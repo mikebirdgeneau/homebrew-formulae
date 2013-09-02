@@ -6,6 +6,9 @@ class OpmCore < Formula
   sha1 '538d8a55ef9a20d2af024f2547721f07ea3232b6'
   version '2013.03'
   depends_on 'cmake' => :build
+  depends_on 'doxygen'
+  depends_on 'boost'
+  #depends_on 'boost-build'
 
   def install
     system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
