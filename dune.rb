@@ -28,7 +28,7 @@ end
 #end
 
 class DuneCommon < Formula
-  homepage ''
+  homepage 'http://www.dune-project.org'
   url 'http://www.dune-project.org/download/2.2.1/dune-common-2.2.1.tar.gz'
   sha1 '9a9888924daf029e48b01b174adeb1472daa827b'
 
