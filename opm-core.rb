@@ -11,9 +11,11 @@ class OpmCore < Formula
   #depends_on 'boost-build'
 
   def install
+    ENV['CFLAGS']=ENV['CXXFLAGS']="-fpic"
     # Note: Added --disable-lto to configure flags, per https://github.com/OPM/opm-core/issues/257
     system "./configure", "--disable-debug", "--disable-lto", "--disable-dependency-tracking", "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
+    ENV['CFLAGS']=ENV['CXXFLAGS']="-fpic"
     system "make", "install" 
   end
 
