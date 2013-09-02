@@ -1,5 +1,15 @@
 require 'formula'
 
+class DuneGeometry < Formula
+  homepage 'http://www.dune-project.org'
+  url 'http://www.dune-project.org/download/2.2.1/dune-geometry-2.2.1.tar.gz'
+  sha1 'f1f8b77a4c062d8662b8f4c44a378073568e1c87'
+
+  depends_on :fortran
+  depends_on 'mikebirdgeneau/formulae/dune-common'
+  
+end
+
 class DuneCommon < Formula
   homepage ''
   url 'http://www.dune-project.org/download/2.2.1/dune-common-2.2.1.tar.gz'
@@ -10,6 +20,8 @@ class DuneCommon < Formula
   depends_on :fortran
 
   def install
+
+    DuneGeometry.new.brew {(buildpath/'dune-geometry').install.Dir['*']}
 
     system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
