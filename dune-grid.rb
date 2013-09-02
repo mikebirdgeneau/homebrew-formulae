@@ -6,7 +6,7 @@ class DuneGrid < Formula
   sha1 '839988c39019e234d92be789ae083c5f510b8d41'
 
   depends_on :fortran
-  depends_on 'dune-common'
+  depends_on 'mikebirdgeneau/homebrew-formulae/dune-common'
 
   def install
 
