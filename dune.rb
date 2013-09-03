@@ -50,6 +50,8 @@ class DuneCommon < Formula
 
     DuneGeometry.new.brew {(buildpath/'dune-geometry').install Dir['*'] }
     DuneIstl.new.brew {(buildpath/'dune-istl').install Dir['*'] }
+    OpmCore.new.brew {(buildpath/'opm-core').install Dir['*'] }
+
     #OpmCore.new.brew {(buildpath/'opm-core').install Dir['*'] }
     system "#{buildpath}/bin/dunecontrol", "--module=dune-common", "all", "--prefix=#{prefix}"
     system "#{buildpath}/bin/dunecontrol", "--module=dune-grid", "all", "--prefix=#{prefix}"   
