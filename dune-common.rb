@@ -27,16 +27,6 @@ end
 #  version '2013.03'
 #end
 
-class OpmCore < Formula
-  homepage 'http://www.opm-project.org/'
-  url 'https://github.com/OPM/opm-core/archive/release/2013.03/final.tar.gz'
-  sha1 '538d8a55ef9a20d2af024f2547721f07ea3232b6'
-  version '2013.03'
-  depends_on 'cmake' => :build
-  depends_on 'doxygen'
-  depends_on 'boost'
-end
-
 class DuneCommon < Formula
   homepage 'http://www.dune-project.org'
   url 'http://www.dune-project.org/download/2.2.1/dune-common-2.2.1.tar.gz'
@@ -50,7 +40,6 @@ class DuneCommon < Formula
 
     DuneGeometry.new.brew {(buildpath/'dune-geometry').install Dir['*'] }
     DuneIstl.new.brew {(buildpath/'dune-istl').install Dir['*'] }
-    OpmCore.new.brew {(buildpath/'opm-core').install Dir['*'] }
 
     #OpmCore.new.brew {(buildpath/'opm-core').install Dir['*'] }
     system "#{buildpath}/bin/dunecontrol", "--module=dune-common", "all", "--prefix=#{prefix}"
