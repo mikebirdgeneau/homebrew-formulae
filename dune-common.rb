@@ -56,7 +56,7 @@ class DuneCommon < Formula
     system "#{buildpath}/bin/dunecontrol", "--module=dune-common", "all", "--prefix=#{prefix}"
     system "#{buildpath}/bin/dunecontrol", "--module=dune-grid", "all", "--prefix=#{prefix}"   
     system "#{buildpath}/bin/dunecontrol", "--module=dune-istl", "all", "--prefix=#{prefix}"   
-    system "make install"
+    #system "make install"
     
     # system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}"
     # system "cmake", ".", *std_cmake_args
